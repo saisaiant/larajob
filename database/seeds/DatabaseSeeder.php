@@ -3,6 +3,7 @@
 use App\Job;
 use App\User;
 use App\Company;
+use App\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +24,18 @@ class DatabaseSeeder extends Seeder
         factory(Company::class, 20)->create();
         factory(Job::class, 20)->create();
 
-        
+        $categories = [
+            'Technology',
+            'Engineering',
+            'Government',
+            'Medical',
+            'Construction',
+            'Software'
+        ];
+        foreach($categories as $category) {
+            Category::create([
+                'name' => $category
+            ]);
+        }
     }
 }

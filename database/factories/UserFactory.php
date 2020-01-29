@@ -30,34 +30,35 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(Company::class, function (Faker $faker) {
-    return [
-        'user_id' => User::all()->random()->id,
-        'cname' => $name = $faker->company,
-        'slug' => Str::slug($name),
-        'address' => $faker->address,
-        'phone' => $faker->phoneNumber,
-        'website' => $faker->domainName,
-        'logo' => 'avatar/logo.png',
-        'cover_photo' => 'cover/cover.jpg',
-        'slogan' => 'learn-earn and grow',
-        'description' => $faker->paragraph(rand(2,10)),
-    ];
-});
+// $factory->define(Company::class, function (Faker $faker) {
+//     return [
+//         'user_id' => User::all()->random()->id,
+//         'cname' => $name = $faker->company,
+//         'slug' => Str::slug($name),
+//         'address' => $faker->address,
+//         'phone' => $faker->phoneNumber,
+//         'website' => $faker->domainName,
+//         'logo' => 'avatar/logo.png',
+//         'cover_photo' => 'cover/cover.jpg',
+//         'slogan' => 'learn-earn and grow',
+//         'description' => $faker->paragraph(rand(2,10)),
+//     ];
+// });
 
 
-$factory->define(Job::class, function (Faker $faker) {
-    return [
-        'user_id' => User::all()->random()->id,
-        'company_id' => Company::all()->random()->id,
-        'title' => $title = $faker->text,
-        'slug' => Str::slug($title),
-        'position' => $faker->jobTitle,
-        'address' => $faker->address,
-        'category_id' => rand(1,5),
-        'type' => 'full-time',
-        'status' => rand(0,1),
-        'description' => $faker->paragraph(rand(2,10)),
-        'last_date' => $faker->DateTime
-    ];
-});
+// $factory->define(Job::class, function (Faker $faker) {
+//     return [
+//         'user_id' => User::all()->random()->id,
+//         'company_id' => Company::all()->random()->id,
+//         'title' => $title = $faker->text,
+//         'slug' => Str::slug($title),
+//         'position' => $faker->jobTitle,
+//         'address' => $faker->address,
+//         'category_id' => rand(1,5),
+//         'type' => 'full-time',
+//         'status' => rand(0,1),
+//         'description' => $faker->paragraph(rand(2,10)),
+//         'roles' => $faker->text,
+//         'last_date' => $faker->DateTime
+//     ];
+// });

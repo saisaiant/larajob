@@ -20,6 +20,7 @@ class CreateJobsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
+            $table->string('roles');
             $table->unsignedBigInteger('category_id');
             $table->string('position');
             $table->string('address');

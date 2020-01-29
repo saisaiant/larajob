@@ -103,26 +103,35 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <h1>Recent Jobs</h1>
             <table class="table">
                 <thead>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Avatar</th>
+                    <th>Position</th>
+                    <th>Address</th>
+                    <th>Date</th>
                     <th></th>
                 </thead>
                 <tbody>
-                    @for($i=0;$i<10;$i++)
-                    <tr>
-                        <td><img src="{{ asset('avatar/logo.png') }}" style="width: 50px" alt=""></td>
-                        <td>position:web developer</td>
-                        <td><i class="fa fa-map-marker" aria-hidden="true"></i> Address: Yangon</td>
-                        <td>Date: 2019-2-9</td>
-                        <td><button class="btn btn-success btn-sm">Apply</button></td>
-                    </tr>
-                    @endfor
+                    @foreach ($jobs as $job)                        
+                        <tr>
+                            <td><img src="{{ asset('avatar/logo.png') }}" style="width: 50px" alt=""></td>
+                            <td>
+                                position:{{ $job->position }} <br>
+                                <i class="fa fa-clock" aria-hidden="true"></i> {{ $job->type }}
+                            </td>
+                            <td><i class="fa fa-map-marker" aria-hidden="true"></i> Address: {{ $job->address }}</td>
+                            <td><i class="fa fa-globe" aria-hidden="true"></i> Date: {{ $job->created_at->diffForHumans() }}</td>
+                            <td><a href="{{ route('jobs.show', [$job->id, $job->slug]) }}" class="btn btn-success btn-sm">Apply</a></td>
+                        </tr>
+                    @endforeach                    
                 </tbody>
             </table>
         </div>
     </div>
 @endsection
+<style>
+    .fa {
+        color: #4183D7;
+    }
+</style>

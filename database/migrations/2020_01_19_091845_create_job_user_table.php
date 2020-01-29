@@ -15,6 +15,8 @@ class CreateJobUserTable extends Migration
     {
         Schema::create('job_user', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('job_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
