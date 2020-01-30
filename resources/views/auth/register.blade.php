@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        <input type="hidden" value="seeker" name="user_type">
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -37,6 +38,43 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required>
+
+                                @error('dob')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+                                <div class="col-md-6 mt-1">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male">
+                                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female">
+                                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-6">
+                                <input type="radio" class="form-check-input" name="gender" value="male" required>Male
+                                <input type="radio" class="form-check-input" name="gender" value="female" required>Female--}}
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            
                         </div>
 
                         <div class="form-group row">
