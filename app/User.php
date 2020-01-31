@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Company;
 use App\Profile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -40,5 +41,9 @@ class User extends Authenticatable
 
     public function profile() {
         return $this->hasOne(Profile::class);
+    }
+
+    public function company() {
+        return $this->hasOne(Company::class);
     }
 }

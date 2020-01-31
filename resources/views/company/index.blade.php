@@ -4,9 +4,18 @@
 <div class="container">
     <div class="col-md-12">
         <div class="company-profile">
-            <img src="{{ asset('cover/ceo.png') }}" class="img-fluid">
+            @if (!empty(Auth::user()->company->cover_photo))
+                <img src="{{ asset('uploads/coverphoto/') }}/{{ Auth::user()->company->cover_photo }}" class="img-fluid" alt="">
+            @else
+                {{-- <p>Please Upload CoverLetter</p> --}}
+                <img src="{{ asset('cover/ceo.png') }}" class="img-fluid">
+            @endif
             <div class="company-desc">
-                <img src="{{ asset('avatar/logo.png') }}" style="width:90px; height:90px">
+                @if (empty(Auth::user()->company->logo))
+                    <img src="{{ asset('avatar/man.jpg') }}" style="width:100%;">
+                @else 
+                    <img src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" style="width:120px">    
+                @endif
                 <p>{{ $company->description }}</p>
                 <h3>{{ $company->cname }}</h3>
                 <p>Slogan - {{ $company->slogan }}
@@ -26,7 +35,9 @@
             <tbody>
                 @foreach ($company->jobs as $job)                        
                     <tr>
-                        <td><img src="{{ asset('avatar/logo.png') }}" style="width: 50px" alt=""></td>
+                        <td>
+                            <img src="{{ asset('avatar/logo.png') }}" style="width: 50px" alt="">
+                        </td>
                         <td>
                             position:{{ $job->position }} <br>
                             <i class="fa fa-clock" aria-hidden="true"></i> {{ $job->type }}
