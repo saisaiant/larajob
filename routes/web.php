@@ -12,6 +12,12 @@
 */
 
 Route::get('/', 'JobController@index');
+Route::get('/jobs/create', 'JobController@create')->name('job.create');
+Route::post('/jobs/create', 'JobController@store')->name('job.store');
+Route::get('/jobs/{id}/edit', 'JobController@edit')->name('job.edit');
+Route::post('/jobs/{id}/edit', 'JobController@update')->name('job.update');
+Route::get('/jobs/my-job', 'JobController@myjob')->name('my.job');
+
 
 Auth::routes();
 
